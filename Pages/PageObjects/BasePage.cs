@@ -3,16 +3,10 @@ using OpenQA.Selenium.Support.UI;
 
 namespace Pages.PageObjects
 {
-    public class BasePage
+    public class BasePage(IWebDriver driver)
     {
-        protected readonly IWebDriver driver;
-        protected readonly WebDriverWait wait;
-
-        public BasePage(IWebDriver driver)
-        {
-            this.driver = driver;
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-        }
+        protected readonly IWebDriver driver = driver;
+        protected readonly WebDriverWait wait = new(driver, TimeSpan.FromSeconds(10));
 
         protected IWebElement WaitForElementToBeClickable(By locator)
         {

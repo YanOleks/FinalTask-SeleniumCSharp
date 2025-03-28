@@ -1,31 +1,34 @@
 ﻿using Pages.PageObjects;
 
-namespace Pages.Tests
+namespace Pages.Specs
 {    
     [TestFixture(BrowserType.Chrome)]
     [TestFixture(BrowserType.Edge)]
+    [TestFixture(BrowserType.Firefox)]
     [Parallelizable]
     public class LoginPageTests
     {
         private readonly BrowserType browser;
         private LoginPage loginPage;
+        private WebDriverManager driverManager;
 
         public LoginPageTests(BrowserType browser)
         {
             this.browser = browser;
-        }
+        }        
 
         [SetUp]
         public void SetUp()
         {
-            Driver.InitDriver(this.browser);
-            loginPage = new LoginPage(Driver.GetDriver()!);
+            driverManager = WebDriverManager.Instance;
+            driverManager.InitDriver(this.browser);
+            loginPage = new LoginPage(driverManager.GetDriver()!);
         }
 
         [TearDown]
         public void TearDown()
         {
-            Driver.QuitDriver();
+            driverManager.QuitDriver();
         }
 
         [TestCaseSource(typeof(LoginPageTestDataProvider), nameof(LoginPageTestDataProvider.GetInvalidUsernameTestData))]

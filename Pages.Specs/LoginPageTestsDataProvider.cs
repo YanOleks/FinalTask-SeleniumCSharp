@@ -1,4 +1,4 @@
-﻿namespace Pages.Tests
+﻿namespace Pages.Specs
 {
     public static class LoginPageTestDataProvider
     {
