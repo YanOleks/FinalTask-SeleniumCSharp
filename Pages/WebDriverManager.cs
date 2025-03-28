@@ -6,16 +6,18 @@
     using OpenQA.Selenium.Edge;
     using System;
 
-    public static class Driver
+    public class WebDriverManager
     {
-        private static readonly ThreadLocal<IWebDriver?> webDriver = new();
+        private static readonly Lazy<WebDriverManager> instance = new(() => new WebDriverManager());
+        private readonly ThreadLocal<IWebDriver?> webDriver = new();
 
-        public static IWebDriver? GetDriver()
-        {
-            return webDriver.Value;
-        }
+        public static WebDriverManager Instance => instance.Value;
 
-        public static void InitDriver(BrowserType browser = BrowserType.Chrome, bool headless = false, bool maximize = true)
+        private WebDriverManager() { }
+
+        public IWebDriver? GetDriver() => webDriver.Value;
+
+        public void InitDriver(BrowserType browser = BrowserType.Chrome, bool headless = false, bool maximize = true)
         {
             if (webDriver.Value == null)
             {
@@ -57,7 +59,7 @@
             return new EdgeDriver(options);
         }
 
-        public static void QuitDriver()
+        public void QuitDriver()
         {
             webDriver.Value?.Quit();
             webDriver.Value?.Dispose();
