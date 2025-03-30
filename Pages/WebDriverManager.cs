@@ -17,7 +17,7 @@
 
         public IWebDriver? GetDriver() => webDriver.Value;
 
-        public void InitDriver(BrowserType browser = BrowserType.Chrome, bool headless = false, bool maximize = true)
+        public IWebDriver InitDriver(BrowserType browser = BrowserType.Chrome, bool headless = false, bool maximize = true)
         {
             if (webDriver.Value == null)
             {
@@ -36,6 +36,7 @@
                     driver.Manage().Window.Maximize();
                 }
             }
+            return webDriver.Value;
         }
 
         private static ChromeDriver InitChromeDriver(bool headless)

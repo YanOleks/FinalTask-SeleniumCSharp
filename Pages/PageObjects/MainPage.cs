@@ -4,11 +4,11 @@ namespace Pages.PageObjects
 {
     public class MainPage(IWebDriver driver) : BasePage(driver)
     {
-        private IWebElement DashboardTitle => driver.FindElement(By.ClassName("app_logo"));
+        private Lazy<IWebElement> DashboardTitle => new(() => WaitForElementToBeVisible(By.ClassName("app_logo")));
 
         public string GetDashboardTitleText()
         {
-            return DashboardTitle.Text;
+            return DashboardTitle.Value.Text;
         }
     }
 }

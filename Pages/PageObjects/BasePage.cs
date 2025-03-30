@@ -16,5 +16,14 @@ namespace Pages.PageObjects
                 return (element.Displayed && element.Enabled) ? element : null;
             });
         }
+
+        protected IWebElement WaitForElementToBeVisible(By locator)
+        {
+            return wait.Until(d =>
+            {
+                var element = d.FindElement(locator);
+                return (element.Displayed) ? element : null;
+            });
+        }
     }
 }
