@@ -84,12 +84,16 @@ namespace Pages.Specs.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("UC-1 - Login with empty credentials")]
-        public async System.Threading.Tasks.Task UC_1_LoginWithEmptyCredentials()
+        [NUnit.Framework.TestCaseAttribute("Chrome", null)]
+        [NUnit.Framework.TestCaseAttribute("Edge", null)]
+        [NUnit.Framework.TestCaseAttribute("Firefox", null)]
+        public async System.Threading.Tasks.Task UC_1_LoginWithEmptyCredentials(string browser, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("browser", browser);
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("UC-1 - Login with empty credentials", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 7
+#line 5
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -99,11 +103,14 @@ namespace Pages.Specs.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 5
-    await testRunner.GivenAsync("I opened the Login page", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line 6
+    await testRunner.GivenAsync(string.Format("I use \"{0}\" browser", browser), ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 7
+    await testRunner.AndAsync("I opened the Login page", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 8
-    await testRunner.GivenAsync("I entered \"standard_user\" as username", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+    await testRunner.AndAsync("I entered \"standard_user\" as username", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 9
     await testRunner.AndAsync("I entered \"secret_sauce\" as password", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -123,12 +130,16 @@ namespace Pages.Specs.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("UC-2 - Login with missing password")]
-        public async System.Threading.Tasks.Task UC_2_LoginWithMissingPassword()
+        [NUnit.Framework.TestCaseAttribute("Chrome", null)]
+        [NUnit.Framework.TestCaseAttribute("Edge", null)]
+        [NUnit.Framework.TestCaseAttribute("Firefox", null)]
+        public async System.Threading.Tasks.Task UC_2_LoginWithMissingPassword(string browser, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("browser", browser);
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("UC-2 - Login with missing password", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 14
+#line 20
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -138,22 +149,25 @@ namespace Pages.Specs.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 5
-    await testRunner.GivenAsync("I opened the Login page", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line 21
+    await testRunner.GivenAsync(string.Format("I use \"{0}\" browser", browser), ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 15
-    await testRunner.GivenAsync("I entered \"standard_user\" as username", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line 22
+    await testRunner.AndAsync("I opened the Login page", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 16
+#line 23
+    await testRunner.AndAsync("I entered \"standard_user\" as username", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 24
     await testRunner.AndAsync("I entered \"secret_sauce\" as password", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 17
+#line 25
     await testRunner.AndAsync("I cleared the Password input", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 18
+#line 26
     await testRunner.WhenAsync("I click the Login button with invalid input", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 19
+#line 27
     await testRunner.ThenAsync("I should see the error message \"Password is required\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
@@ -162,12 +176,16 @@ namespace Pages.Specs.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("UC-3 - Login with valid credentials")]
-        public async System.Threading.Tasks.Task UC_3_LoginWithValidCredentials()
+        [NUnit.Framework.TestCaseAttribute("Chrome", null)]
+        [NUnit.Framework.TestCaseAttribute("Edge", null)]
+        [NUnit.Framework.TestCaseAttribute("Firefox", null)]
+        public async System.Threading.Tasks.Task UC_3_LoginWithValidCredentials(string browser, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("browser", browser);
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("UC-3 - Login with valid credentials", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 21
+#line 35
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -177,19 +195,22 @@ namespace Pages.Specs.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 5
-    await testRunner.GivenAsync("I opened the Login page", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line 36
+    await testRunner.GivenAsync(string.Format("I use \"{0}\" browser", browser), ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 22
-    await testRunner.GivenAsync("I entered \"standard_user\" as username", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line 37
+    await testRunner.AndAsync("I opened the Login page", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 23
+#line 38
+    await testRunner.AndAsync("I entered \"standard_user\" as username", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 39
     await testRunner.AndAsync("I entered \"secret_sauce\" as password", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 24
+#line 40
     await testRunner.WhenAsync("I click the Login button with valid input", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 25
+#line 41
     await testRunner.ThenAsync("I should see the dashboard title \"Swag Labs\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
