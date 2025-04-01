@@ -4,23 +4,38 @@
     using OpenQA.Selenium.Chrome;
     using OpenQA.Selenium.Firefox;
     using OpenQA.Selenium.Edge;
+    using Serilog;
     using System;
 
     public class WebDriverManager
     {
         private static readonly Lazy<WebDriverManager> instance = new(() => new WebDriverManager());
         private readonly ThreadLocal<IWebDriver?> webDriver = new();
+        private readonly Serilog.Core.Logger log = new LoggerConfiguration()
+            .MinimumLevel.Debug()
+            .WriteTo.Console()
+            .WriteTo.File("logs/webdriver.log")
+            .CreateLogger();
 
         public static WebDriverManager Instance => instance.Value;
 
-        private WebDriverManager() { }
+        private WebDriverManager() 
+        {
+        }
 
         public IWebDriver? GetDriver() => webDriver.Value;
 
         public IWebDriver InitDriver(BrowserType browser = BrowserType.Chrome, bool headless = false, bool maximize = true)
         {
+            
             if (webDriver.Value == null)
             {
+                log.Information(
+                    "Initiating webdriver with {Browser} browser with headless:{Headless} and maximize:{Max}", 
+                    browser,
+                    headless,
+                    maximize
+                    );
                 IWebDriver driver = browser switch
                 {
                     BrowserType.Chrome => InitChromeDriver(headless),
@@ -35,6 +50,7 @@
                 {
                     driver.Manage().Window.Maximize();
                 }
+                log.Information("Webdriver initiated");
             }
             return webDriver.Value;
         }
@@ -62,9 +78,11 @@
 
         public void QuitDriver()
         {
+            log.Information("Quitting webdriver");
             webDriver.Value?.Quit();
             webDriver.Value?.Dispose();
             webDriver.Value = null;
+            Log.CloseAndFlush();
         }
     }
 
